@@ -37,6 +37,8 @@ class MemoryBlossomChatbot:
         self.model = model
         self.conversation_history: List[Dict[str, str]] = []
         self.max_history_length = 10  # Limit conversation history
+        # initialize temperature
+        self.temperature = 0.7  # Default starting temperature
 
         # Seed the bot with a couple of “personality” memories
         self._initialize_personality_memories()
