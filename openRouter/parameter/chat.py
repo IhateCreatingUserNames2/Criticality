@@ -111,7 +111,7 @@ class MemoryBlossomChatbot:
     def __init__(
             self,
             openrouter_api_key: Optional[str] = None,
-            model: str = "microsoft/mai-ds-r1:free",  # Now using OpenRouter model format
+            model: str = "deepseek/deepseek-chat-v3-0324:free",  # Now using OpenRouter model format
             memory_persistence: bool = True,
     ):
         """
@@ -230,9 +230,9 @@ class MemoryBlossomChatbot:
             Dict containing model selection and routing preferences
         """
         # Define models for different zones
-        ordered_zone_models = ["microsoft/mai-ds-r1:free", "microsoft/mai-ds-r1:free"]
-        critical_zone_models = ["microsoft/mai-ds-r1:free", "microsoft/mai-ds-r1:free"]
-        chaotic_zone_models = ["microsoft/mai-ds-r1:free", "microsoft/mai-ds-r1:free"]
+        ordered_zone_models = ["deepseek/deepseek-chat-v3-0324:free", "deepseek/deepseek-chat-v3-0324:free"]
+        critical_zone_models = ["deepseek/deepseek-chat-v3-0324:free", "deepseek/deepseek-chat-v3-0324:free"]
+        chaotic_zone_models = ["deepseek/deepseek-chat-v3-0324:free", "deepseek/deepseek-chat-v3-0324:free"]
 
         # Define parameters for different zones
         if current_zone == 0:  # Ordered zone - need more creativity
@@ -627,6 +627,7 @@ def measure_statistical_likelihood_from_logprobs(logprobs_data) -> float:
     Higher average logprobs = more confident = more ordered.
     """
     if not logprobs_data:
+        print("[Warning] No logprobs received. Some criticality metrics defaulted to neutral values (0.5).")
         return 0.5  # fallback to neutral if no data
 
     logprob_values = [token.logprob for token in logprobs_data if token.logprob is not None]
