@@ -59,7 +59,7 @@ class MemoryBlossom:
                 'Emotional': SentenceTransformer('hkunlp/instructor-xl'),
                 'Procedural': SentenceTransformer('intfloat/e5-large-v2'),
                 'Flashbulb': SentenceTransformer('nomic-ai/nomic-embed-text-v1', trust_remote_code=True),
-                'Somatic': SentenceTransformer('all-MiniLM-L6-v2'), # THIS SHOULD BE CLIP EMBEDDING MODEL BUT ITS TOO HEAVY
+                'Somatic': SentenceTransformer('openai/clip-vit-base-patch32'),  
                 'Liminal': SentenceTransformer('mixedbread-ai/mxbai-embed-large-v1'),
                 'Generative': SentenceTransformer('hkunlp/instructor-xl'),
             }
