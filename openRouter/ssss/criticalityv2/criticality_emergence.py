@@ -83,7 +83,8 @@ class CriticalityEmergenceSystem:
                     self.repeller_points.append(param_tuple)
 
     def generate_emergent_response(self, client, messages, query, query_analysis,
-                                   calculate_metrics_func, assess_criticality_func):
+                                   calculate_metrics_func, assess_criticality_func,
+                                   model_name="gpt-4o-mini"):
         """
         Generate a response that emerges at the edge of chaos through
         dynamic interaction of parameter fields.
@@ -127,8 +128,9 @@ class CriticalityEmergenceSystem:
                       f"top_p={api_params['top_p']:.2f}")
 
                 # Generate response
+                # Generate response
                 response = client.chat.completions.create(
-                    model=client.model,
+                    model=model_name,  # Use the passed model name
                     messages=messages,
                     **api_params
                 )
@@ -179,8 +181,9 @@ class CriticalityEmergenceSystem:
         }
 
         try:
+            # Fallback if all attempts failed
             fallback = client.chat.completions.create(
-                model=client.model,
+                model=model_name,  # Use the passed model name
                 messages=messages,
                 **fallback_params
             )

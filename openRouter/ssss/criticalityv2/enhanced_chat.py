@@ -969,7 +969,8 @@ class EnhancedMemoryBlossomChat:
             user_message,
             query_analysis,
             self._calculate_metrics,  # Pass your existing metrics function
-            assess_extended_criticality  # Pass the existing criticality assessment function
+            assess_extended_criticality,  # Pass the existing criticality assessment function
+            model_name=self.model  # Pass the model name from the instance
         )
 
         print(f"[Emergent System] Response generated in zone {current_zone}")
